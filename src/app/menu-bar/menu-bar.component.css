@@ -1,3 +1,29 @@
 .example-spacer {
     flex: 1 1 auto;
 }
+.example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .example-container {
+    width: 100vw;
+    height: 100vh;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  } 
+  
+  .example-sidenav {
+    height: 100vh;
+  }
+
+  body {
+    color: black;
+    background-color: darkseagreen;
+    text-align: center;
+    border: 5px solid darkslategrey;
+}
+
+.title{
+    text-align: center;
+}
