@@ -21,6 +21,15 @@ public loggedIn = false;
     return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
   }
 
+  setCurrentUser(uid: string){
+    sessionStorage.setItem('user', uid);
+    this.loggedIn = true;
+  }
+  
+  getCurrentUser() {
+    return sessionStorage.getItem('user') || undefined;
+  }
+
   isLoggedin() {
     return this.loggedIn;
   }  
@@ -30,7 +39,9 @@ public loggedIn = false;
     return this.afAuth.signInWithPopup(provider)
     .then((result) => {
         console.log('You have been successfully logged in!');
-        this.loggedIn = true;
+        if(result.user!=null){
+          this.setCurrentUser(result.user.uid);
+        }
     }).catch((error) => {
         console.log(error)
     })
