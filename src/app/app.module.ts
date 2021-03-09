@@ -18,12 +18,13 @@ import { SigninComponent } from './signin/signin.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list'
-//import { routes } from './routes';
 import { QuizComponent } from './quiz/quiz.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DoQuizComponent } from './do-quiz/do-quiz.component';
 import { QuizOverviewComponent } from './quiz-overview/quiz-overview.component';
 import { FlashCardComponent } from './do-quiz/flash-card/flash-card.component';
+
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -51,9 +52,9 @@ import { FlashCardComponent } from './do-quiz/flash-card/flash-card.component';
     MatMenuModule,
     MatListModule,
 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
 
-    //RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

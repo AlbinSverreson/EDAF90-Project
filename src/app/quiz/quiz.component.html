@@ -1,17 +1,40 @@
-<p>Number of questions: </p>
-
-  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+<div class="container">
   
-    <label>
-      Question:
-      <input type="text" formControlName="question">
-    </label>
+    <h1>Create a collection of Q&A:s</h1>
+    
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      
+      <p>
+        <label for="name">Collection Name:</label>
+        <input type="text" id="name" name="name" formControlName="name" class="form-control">
+      </p>
+    
+      <table class="table table-bordered" formArrayName="QnAs">
+        <tr>
+          <th colspan="2">Add multiple questions: </th>
+          <th width="150px"><button type="button" (click)="addQuestion()" name="questionCounter" class="btn btn-primary">Add question</button></th>
+        </tr>
+        <tr *ngFor="let quantity of QnAs().controls; let i=index" [formGroupName]="i">
+          <td>
+              Question:
+              <input type="text" formControlName="question" class="form-control">
+          </td>
+          <td>
+              Answer:
+              <input type="text" formControlName="answer" class="form-control">
+          </td>
+          <td>
+              <button (click)="removeQuestion(i)" class="btn btn-danger">Remove</button>
+          </td>
+        </tr>
+      </table>
+     
+      <button type="submit" class="btn btn-success">Submit</button>
+      
+    </form>
+      
+    <br/>
+    {{this.profileForm.value | json}}
+    
+  </div>
   
-    <label>
-      Answer:
-      <input type="text" formControlName="answer">
-    </label>
-    <button type="change">Add question</button>
-    <button type="submit" [disabled]="!profileForm.valid">Submit quiz</button>
-  
-  </form>
