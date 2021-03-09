@@ -1,10 +1,14 @@
 <div class="card" (click)="cardClicked()" [@cardFlip]="data.state">
     <div class="face back">
         <img src="assets/flashcard_img.png">
-        <div class="centered">Centered back</div>
+        <div class="centered">
+            <span [innerHTML]="question"></span>
+        </div>
     </div>
     <div class="face front">
         <img src="assets/flashcard_img.png">
-        <div class="centered">Centered front</div>
+        <div class="centered">
+            <span [innerHTML]="answer"></span>
+        </div>
     </div>
 </div>

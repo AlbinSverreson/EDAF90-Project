@@ -1,14 +1,14 @@
 <p>bing bang bom you can take a quiz here!</p>
 
 <div class="flashCard">
-    <app-flash-card></app-flash-card>
+    <app-flash-card [question]="questionToCard" [answer]="answerToCard" ></app-flash-card>
 </div>
-<div class="correctButton">
+<div class="correctButton" (click)="correctOnClick()">
     <button mat-raised-button color="#2E7D32">Correct</button>
 </div>
-<div class="wrongButton">
+<div class="wrongButton" (click)="wrongOnClick()">
     <button mat-raised-button color="#2E7D32">Wrong</button>
 </div>
 <div class="Score">
-    <span [innerHTML]="scoreValue"></span>
+    Score: <span [innerHTML]="scoreValue"></span>
 </div>
