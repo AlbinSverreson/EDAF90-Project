@@ -21,6 +21,8 @@ import {MatListModule} from '@angular/material/list'
 //import { routes } from './routes';
 import { QuizComponent } from './quiz/quiz.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DoQuizComponent } from './do-quiz/do-quiz.component';
+import { QuizOverviewComponent } from './quiz-overview/quiz-overview.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MenuBarComponent,
     SigninComponent,
     QuizComponent,
+    DoQuizComponent,
+    QuizOverviewComponent,
 
   ],
   imports: [
