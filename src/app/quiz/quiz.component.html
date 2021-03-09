@@ -13,6 +13,9 @@
         <tr>
           <th colspan="2">Add multiple questions: </th>
           <th width="150px"><button type="button" (click)="addQuestion()" class="btn btn-primary">Add question</button></th>
+
+          <th colspan="2">Number of questions: </th>
+          <p> {{this.questionCounter}} </p>
         </tr>
         <tr *ngFor="let quantity of QnAs().controls; let i=index" [formGroupName]="i">
           <td>

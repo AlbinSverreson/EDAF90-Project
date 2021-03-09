@@ -50,6 +50,7 @@ public database = firebase.database();
 
   removeQuestion(i:number) {
     this.QnAs().removeAt(i);
+    this.questionCounter--;
   }
 
   clearForm(){
@@ -57,6 +58,7 @@ public database = firebase.database();
         name: '',
         QnAs: this.fb.array([]) 
       });
+    this.questionCounter = 0;
     
    }
   
@@ -65,6 +67,13 @@ public database = firebase.database();
     let questions = this.profileForm.value.question;
     let answers = this.profileForm.value.answer;
     let userID = sessionStorage.getItem('user');
+    let qcounter = this.questionCounter;
+
+    this.questionCounter++;
+    if(this.questionCounter>4){
+        this.QnACounter++;
+        this.questionCounter=0;
+    }
 
     this.clearForm(); //funkar inte att ha den längst ner idk why
 
@@ -72,12 +81,7 @@ public database = firebase.database();
        q : questions,
         a : answers
     })
-
-    this.questionCounter++;
-    if(this.questionCounter>4){
-        this.QnACounter++;
-        this.questionCounter=0;
-    }
+    
 }
 
 }
