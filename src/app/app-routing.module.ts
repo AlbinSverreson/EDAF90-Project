@@ -6,6 +6,7 @@ import { QuizComponent } from './quiz/quiz.component';
 const routes: Routes = [
   {path: 'menubar', component: MenuBarComponent},
   {path: 'quiz', component: QuizComponent},
+  {path: '', redirectTo: '/menubar', pathMatch: 'full'}
 
 ];
 

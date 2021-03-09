@@ -20,6 +20,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list'
 //import { routes } from './routes';
 import { QuizComponent } from './quiz/quiz.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -44,6 +45,8 @@ import { QuizComponent } from './quiz/quiz.component';
     MatSidenavModule,
     MatMenuModule,
     MatListModule,
+
+    ReactiveFormsModule
 
     //RouterModule.forRoot(routes)
   ],
