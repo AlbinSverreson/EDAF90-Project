@@ -15,7 +15,7 @@ import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'
 export class QuizComponent implements OnInit {
 public database = firebase.database();
   public questionCounter = 0;
-  public QnACounter = 0;
+  public QnACounter = 0; //koppla till user?
 
   ngOnInit(): void {
   }
@@ -45,20 +45,34 @@ public database = firebase.database();
 
   addQuestion() {
     this.QnAs().push(this.newQuestion());
+    this.questionCounter++;
   }
 
   removeQuestion(i:number) {
     this.QnAs().removeAt(i);
   }
+
+  clearForm(){
+    this.profileForm = this.fb.group({
+        name: '',
+        QnAs: this.fb.array([]) 
+      });
+    
+   }
   
   onSubmit() {
-    let question = this.profileForm.value.question;
-    let answer = this.profileForm.value.answer;
+    
+    let questions = this.profileForm.value.question;
+    let answers = this.profileForm.value.answer;
     let userID = sessionStorage.getItem('user');
+
+    this.clearForm(); //funkar inte att ha den längst ner idk why
+
     this.database.ref('users/' + userID + '/' + "quiz" + this.QnACounter + '/' + "question" + this.questionCounter).set({
-       q : question,
-        a : answer
+       q : questions,
+        a : answers
     })
+
     this.questionCounter++;
     if(this.questionCounter>4){
         this.QnACounter++;
