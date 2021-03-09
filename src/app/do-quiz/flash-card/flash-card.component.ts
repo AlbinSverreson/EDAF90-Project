@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, SimpleChange, ɵɵNgOnChangesFeature } from '@angular/core';
 import {
   trigger,
   state,
@@ -24,16 +24,34 @@ import {
         animate('400ms')
       ]),
       transition('flipped => default', [
-        animate('200ms')
+        animate('400ms')
       ])
     ])
   ]
 })
-export class FlashCardComponent implements OnInit {
+export class FlashCardComponent implements OnInit, OnChanges {
+  @Input() question: string;
+  @Input() answer: string;
+  
+
+  constructor(){
+    this.question = "";
+    this.answer = "";
+    
+  }
 
   data: CardData = {
     state: "default"
   };
+  
+    ngOnChanges() {
+      this.data.state = "default";
+    }
+
+
+  ngOnInit(): void {
+
+  }
 
   cardClicked() {
     if (this.data.state === "default") {
@@ -42,9 +60,11 @@ export class FlashCardComponent implements OnInit {
       this.data.state = "default";
     }
   }
-  ngOnInit(): void {
-  }
+
 }
+
+
+
 
 export interface CardData {
   state: 'default' | 'flipped' | 'matched';
