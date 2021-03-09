@@ -23,6 +23,7 @@ import { QuizComponent } from './quiz/quiz.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DoQuizComponent } from './do-quiz/do-quiz.component';
 import { QuizOverviewComponent } from './quiz-overview/quiz-overview.component';
+import { FlashCardComponent } from './do-quiz/flash-card/flash-card.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { QuizOverviewComponent } from './quiz-overview/quiz-overview.component';
     QuizComponent,
     DoQuizComponent,
     QuizOverviewComponent,
+    FlashCardComponent,
 
   ],
   imports: [

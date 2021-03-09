@@ -5,11 +5,25 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './do-quiz.component.html',
   styleUrls: ['./do-quiz.component.css']
 })
+
+
+ 
+
 export class DoQuizComponent implements OnInit {
-
-  constructor() { }
-
+  
+  constructor() { 
+    this.scoreValue = 0;
+  }
+  
   ngOnInit(): void {
+    this.onChangeScore(19);
   }
 
+  public scoreValue;
+
+  onChangeScore(newScore) { 
+     this.scoreValue = newScore;
+  }
+
+    
 }
