@@ -1,18 +1,17 @@
 <p>Number of questions: </p>
 
-
   <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
   
     <label>
       Question:
-      <input type="text" formControlName="firstName">
+      <input type="text" formControlName="question">
     </label>
   
     <label>
       Answer:
-      <input type="text" formControlName="lastName">
+      <input type="text" formControlName="answer">
     </label>
-    <button>add question</button>
+    <button>Add question</button>
     <button type="submit" [disabled]="!profileForm.valid">Submit quiz</button>
   
   </form>

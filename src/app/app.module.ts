@@ -24,7 +24,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DoQuizComponent } from './do-quiz/do-quiz.component';
 import { QuizOverviewComponent } from './quiz-overview/quiz-overview.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
