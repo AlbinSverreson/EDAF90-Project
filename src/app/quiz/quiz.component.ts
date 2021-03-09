@@ -14,6 +14,8 @@ import { CloseScrollStrategy } from '@angular/cdk/overlay';
 
 export class QuizComponent implements OnInit {
     public database = firebase.database();
+    public questionCounter = 0;
+    public QnACounter = 0;
 
     ngOnInit(): void {
     }
@@ -25,12 +27,22 @@ export class QuizComponent implements OnInit {
 
     constructor(private fb: FormBuilder) { }
 
-      onSubmit() {
-        // TODO: Use EventEmitter with form value
-        let q = this.profileForm.value.question;
-        let a = this.profileForm.value.answer;
-        this.database.ref('users/' + 32).set({
-            q : a
+    addQuestion(){
+        console.log('här nu');
+    }
+    
+    onSubmit() {
+        let question = this.profileForm.value.question;
+        let answer = this.profileForm.value.answer;
+        let userID = sessionStorage.getItem('user');
+        this.database.ref('users/' + userID + '/' + "quiz" + this.QnACounter + '/' + "question" + this.questionCounter).set({
+            q : question,
+            a : answer
         })
-      }
+        this.questionCounter++;
+        if(this.questionCounter>4){
+            this.QnACounter++;
+            this.questionCounter=0;
+        }
+    }
 }

@@ -1,1 +1,14 @@
-<p>bing bang bom you can make a quiz here!</p>
+<p>bing bang bom you can take a quiz here!</p>
+
+<div class="flashCard">
+    <app-flash-card></app-flash-card>
+</div>
+<div class="correctButton">
+    <button mat-raised-button color="#2E7D32">Correct</button>
+</div>
+<div class="wrongButton">
+    <button mat-raised-button color="#2E7D32">Wrong</button>
+</div>
+<div class="Score">
+    <span [innerHTML]="scoreValue"></span>
+</div>
