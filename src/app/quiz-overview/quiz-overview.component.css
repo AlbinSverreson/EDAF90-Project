@@ -1,0 +1,10 @@
+.quiz-overview-background {
+    margin: 2rem;
+    border-radius: 5px;
+}
+
+.quiz {
+    background-color: white;
+    margin: 2vw 0;
+    padding: 10vw 0;
+}
