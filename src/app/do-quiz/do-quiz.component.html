@@ -19,11 +19,10 @@
   <div class="retryButton" (click)="retryOnClick()" *ngIf="!this.isElementVisible">
     <button mat-raised-button color="#2E7D32">Retry</button>   
   </div>
-  <div class="backToOverviewButton">
-    <a routerLink='/quiz-overview' routerLinkActive = "active"><button mat-raised-button color="#2E7D32">Back to Overview</button></a>
-  </div>
-
   <div class="Score" *ngIf="this.isElementVisible">
       Score: <span [innerHTML]="scoreValue"></span> / <span [innerHTML]="questionList.length"></span>
+  </div>
+  <div class="backToOverviewButton">
+    <a routerLink='/quiz-overview' routerLinkActive = "active"><button mat-raised-button color="#2E7D32">Back to Overview</button></a>
   </div>
 </ng-template>
