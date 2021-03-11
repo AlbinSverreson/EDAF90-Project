@@ -4,26 +4,26 @@
 
 <ng-template #loggedin>
   <p>bing bang bom you can take a quiz here!</p>
-  
-  <div class="flashCard">
+  <div class="finishedQuiz" *ngIf="!this.isElementVisible">
+    Quiz completed you scored: <span [innerHTML]="scoreValue"></span> / <span [innerHTML]="questionList.length"></span>
+  </div>
+  <div class="flashCard" *ngIf="this.isElementVisible">
       <app-flash-card [question]="questionToCard" [answer]="answerToCard" ></app-flash-card>
   </div>
-  <div class="correctButton" (click)="correctOnClick()">
+  <div class="correctButton" (click)="correctOnClick()" *ngIf="this.isElementVisible">
       <button mat-raised-button color="#2E7D32">Correct</button>
   </div>
-  <div class="wrongButton" (click)="wrongOnClick()">
+  <div class="wrongButton" (click)="wrongOnClick()" *ngIf="this.isElementVisible">
       <button mat-raised-button color="#2E7D32">Wrong</button>
   </div>
-  <div class="retryButton" (click)="retryOnClick()">
+  <div class="retryButton" (click)="retryOnClick()" *ngIf="!this.isElementVisible">
     <button mat-raised-button color="#2E7D32">Retry</button>   
   </div>
   <div class="backToOverviewButton">
     <a routerLink='/quiz-overview' routerLinkActive = "active"><button mat-raised-button color="#2E7D32">Back to Overview</button></a>
   </div>
-  <div class="finishedQuiz">
-    Quiz completed you scored: <span [innerHTML]="scoreValue"></span> / <span [innerHTML]="questionList.length"></span>
-  </div>
-  <div class="Score">
+
+  <div class="Score" *ngIf="this.isElementVisible">
       Score: <span [innerHTML]="scoreValue"></span> / <span [innerHTML]="questionList.length"></span>
   </div>
 </ng-template>

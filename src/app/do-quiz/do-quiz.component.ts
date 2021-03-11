@@ -21,8 +21,7 @@ export class DoQuizComponent implements OnInit {
   public answerToCard: string;
   public questionList: string[];
   private answerList: string[];
-
-
+  public isElementVisible = true;
 
   constructor(public authService: AuthService) { 
     this.scoreValue = 0;
@@ -31,7 +30,6 @@ export class DoQuizComponent implements OnInit {
     this.questionList = [];
     this.answerList = [];
   }
-
   
   ngOnInit(): void {
     this.questionList = questions;
@@ -40,14 +38,12 @@ export class DoQuizComponent implements OnInit {
     this.answerToCard = this.answerList[0];
   }
   
-
-
-
   public correctOnClick(){
     if(this.questionList.indexOf(this.questionToCard) >= this.questionList.length - 1) {
       //Display retry knapp
       this.scoreValue++;
-      alert("Nu har du nått slutet");
+      this.isElementVisible = false;
+
     } else {
       //this.whereInList++;
       this.questionToCard = this.questionList[this.questionList.indexOf(this.questionToCard) + 1];
@@ -56,13 +52,11 @@ export class DoQuizComponent implements OnInit {
         this.answerToCard = this.answerList[this.questionList.indexOf(this.questionToCard)];
       }, 400);
     }
-
   }
 
   public wrongOnClick() {
     if(this.questionList.indexOf(this.questionToCard) >= this.questionList.length - 1) {
-      //Display retry knapp
-      alert("Nu har du nått slutet");
+      this.isElementVisible = false;
  
     } else {
       this.questionToCard = this.questionList[this.questionList.indexOf(this.questionToCard) + 1];
@@ -75,11 +69,6 @@ export class DoQuizComponent implements OnInit {
   public retryOnClick() {
     window.location.reload()
   }
-
-  public backToOverviewOnClick() {
-    
-  }
-
 }
 
 
