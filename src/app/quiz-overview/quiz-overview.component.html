@@ -4,9 +4,9 @@
 
 <ng-template #loggedin>
   <div class="quiz-overview-background" id="show-quiz">
-      <div *ngFor="let quiz of quizes">
+      <div class="quiz" *ngFor="let quiz of quizes">
         {{quiz}}
-        <button (click)="takeQuiz();">Take Quiz</button>
+        <button mat-raised-button (click)="takeQuiz();">Take Quiz</button>
       </div>
       <!-- <div class="quiz">
           Saker här
