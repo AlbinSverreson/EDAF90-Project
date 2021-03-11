@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import "firebase/database";
 import { CloseScrollStrategy } from '@angular/cdk/overlay';
 import { AuthService } from "../auth.service";
+import { Router } from '@angular/router';
 
 import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'
 
@@ -14,7 +15,7 @@ import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'
 })
 
 export class QuizComponent implements OnInit {
-public database = firebase.database();
+  public database = firebase.database();
   public questionCounter = 0;
   public QnACounter = 0; //koppla till user?
 
@@ -25,7 +26,7 @@ public database = firebase.database();
 
   profileForm: FormGroup;
    
-  constructor(private fb:FormBuilder, public authService: AuthService) {
+  constructor(private fb:FormBuilder, public authService: AuthService, private router: Router) {
 
     this.profileForm = this.fb.group({
       name: '',
@@ -62,42 +63,17 @@ public database = firebase.database();
     this.questionCounter = 0;
     
    }
-  
-  onSubmit() {
-    let formData = this.profileForm.value.get(this.QnAs);
-    let qcounter = this.questionCounter;
-    let userQnACounter = this.QnACounter;
-
-    //this.questionCounter++;
-    //if(this.questionCounter>4){
-       // this.QnACounter++;
-        //this.questionCounter=0;
-   // }
-
-    this.clearForm(); //funkar inte att ha den längst ner idk why
-
-    let questions: string [] = [];
-    let answers: string [] = [];
-
-    formData.array.forEach(element => {
-      if (questions == null) {
-        questions = element[0];
-      } 
-      questions.push(element[0]);
-
-      if (answers == null) {
-        answers = element[1];
-      } 
-      answers.push(element[1]);
-    });
-  
-
+   
+   onSubmit() {
     let userID = sessionStorage.getItem('user');
-    this.database.ref('users/' + userID + '/' + "quiz" + userQnACounter + '/' + "question" + qcounter).set({
-       q : questions,
-        a : answers
-    })
-    
+    for(let i = 0; i<this.questionCounter;i++){
+      this.database.ref('users/' + userID + '/' + this.profileForm.value.name + '/' + "question" + (i+1)).set({
+        q : this.profileForm.value.QnAs[i].question,
+        a : this.profileForm.value.QnAs[i].answer
+      })    
+    }
+    this.clearForm(); //funkar inte att ha den längst ner idk why
+    /* this.router.navigateByUrl('/quiz-overview'); */
 }
 
 }
