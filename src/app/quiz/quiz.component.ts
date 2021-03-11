@@ -63,10 +63,24 @@ public database = firebase.database();
    }
   
   onSubmit() {
-    
-    let questions = this.profileForm.value.question;
-    let answers = this.profileForm.value.answer;
-    let userID = sessionStorage.getItem('user');
+    let formData = this.profileForm.value;
+    let x = formData.get(this.QnAs);
+
+    let questions: string [] = [];
+    let answers: string [] = [];
+
+    x.array.forEach(element => {
+      if (questions == null) {
+        questions = element[0];
+      } 
+      questions.push(element[0]);
+
+      if (answers == null) {
+        answers = element[1];
+      } 
+      answers.push(element[1]);
+    });
+   
     let qcounter = this.questionCounter;
 
     this.questionCounter++;
@@ -77,6 +91,7 @@ public database = firebase.database();
 
     this.clearForm(); //funkar inte att ha den längst ner idk why
 
+    let userID = sessionStorage.getItem('user');
     this.database.ref('users/' + userID + '/' + "quiz" + this.QnACounter + '/' + "question" + this.questionCounter).set({
        q : questions,
         a : answers

@@ -5,7 +5,7 @@
     <form id="myForm" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
       
       <p>
-        <label for="name">Collection Name:</label>
+        <label for="name">Quiz Name:</label>
         <input type="text" id="name" name="name" formControlName="name" class="form-control">
       </p>
     
@@ -41,9 +41,10 @@
       
     </form>
       
-    <!--bara för att hålla koll på hur vårt form objekt ser ut
+    <!--bara för att hålla koll på hur vårt form objekt ser ut -->
     {{this.profileForm.value | json}} 
-    -->
+    {{this.profileForm.value.QnAs.question | json }}
+    
     
   </div>
   
