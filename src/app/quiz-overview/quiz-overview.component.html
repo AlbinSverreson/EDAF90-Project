@@ -4,6 +4,10 @@
 
 <ng-template #loggedin>
   <div class="quiz-overview-background" id="show-quiz">
+      <div *ngFor="let quiz of this.quizes">
+        {{quiz}}
+        <button (click)="takeQuiz();">Take Quiz</button>
+      </div>
       <!-- <div class="quiz">
           Saker här
       </div>

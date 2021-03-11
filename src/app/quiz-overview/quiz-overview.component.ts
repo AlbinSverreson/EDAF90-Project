@@ -1,7 +1,6 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import firebase from 'firebase/app';
-import { Observable } from 'rxjs';
 import { AuthService } from "../auth.service";
 import 'firebase/database';
 
@@ -18,7 +17,12 @@ import 'firebase/database';
 
 export class QuizOverviewComponent implements OnInit {
   
-  constructor(private renderer: Renderer2, public authService: AuthService) {
+  @Input() quizes: any;
+
+
+
+  constructor(private router: Router, public authService: AuthService) {
+    this.quizes = [];
   }
   
   ngOnInit(): void {
@@ -26,27 +30,60 @@ export class QuizOverviewComponent implements OnInit {
     const db = firebase.database();  
     
     let ref = db.ref('users/' + userId);
-    ref.on('value', readUserQuizes);
+    ref.on('value', (data) => {
 
-    function readUserQuizes(data: any) {
       const rootQuiz = document.getElementById("show-quiz");
       let user = data.val();
-      let quizes = Object.keys(user);
-      console.log(quizes);
-      for(let i = 0; i < quizes.length; i++){
-        createQuizBox(rootQuiz, data, i);
-      }
-      console.log(rootQuiz);
-      }
+      let test = { quiz: data.val()};
+      let userQuizes = Object.keys(user);
       
-    function createQuizBox(root, data: any, index) {
-      const div = document.createElement("div");
-      div.textContent = "Quiz " + index;
-      div.classList.add("show-quiz");
-      root.appendChild(div);
-    }
-  }
   
+
+      for (let prop in user) {
+        if (user.hasOwnProperty(prop)) {
+           let innerObj = {};
+           innerObj[prop] = user[prop];
+           this.quizes.push(innerObj);
+        }
+     }
+      
+      console.log(   data.val()  );
+      console.log(   userQuizes[0]   );
+      console.log(   this.quizes  );
+      // for(let i = 0; i < this.quizes.length; i++){
+      //   createQuizBox(rootQuiz, data, i);
+      // }
+    });
+    
+    // console.log(ref.on('value', readUserQuizes))
+
+    // const readUserQuizes = (data: any) => {
+      // const rootQuiz = document.getElementById("show-quiz");
+      // let user = data.val();
+      // this.quizes = data.val();
+      // let quizes = Object.keys(user);
+      // console.log(user);
+      // for(let i = 0; i < quizes.length; i++){
+      //   createQuizBox(rootQuiz, data, i);
+      // }
+      // console.log(rootQuiz);
+    // }
+      
+    // function createQuizBox(root, data: any, index) {
+    //   const div = document.createElement("div");
+    //   div.textContent = "Quiz " + index;
+    //   div.classList.add("show-quiz");
+    //   const button = document.createElement("button");
+    //   button.innerHTML = "Take Quiz";
+    //   div.appendChild(button);
+    //   root.appendChild(div);
+
+
+    // }
+  }
+  takeQuiz() {
+    this.router.navigateByUrl('/do-quiz');
+  };
 }
 
 
