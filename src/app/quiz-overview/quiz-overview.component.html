@@ -4,7 +4,7 @@
 
 <ng-template #loggedin>
   <div class="quiz-overview-background" id="show-quiz">
-      <div *ngFor="let quiz of this.quizes">
+      <div *ngFor="let quiz of quizes">
         {{quiz}}
         <button (click)="takeQuiz();">Take Quiz</button>
       </div>
