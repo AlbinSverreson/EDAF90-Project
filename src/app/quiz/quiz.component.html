@@ -4,23 +4,18 @@
 
 <ng-template #loggedin>
   <ng-container >
+
+    <h2 >Create a quiz</h2>
   
-    <form id="myForm" [formGroup]="profileForm" (ngSubmit)="onSubmit()" >
-    
+    <form id="myForm" [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="center">
+      
+      <p> 
+        <label for="name"> Quiz Name:  </label>
+        <input matInput type="text" id="name" name="name" formControlName="name" class="form-control">
+      </p>
+
       <table mat-table class="center" formArrayName="QnAs" >
-
-        <tr mat-row> 
-          <th mat-header-cell colspan="2"> 
-            <h2 >Create a quiz</h2>
-          </th>
-        </tr>
-        
-        <tr mat-row >
-          <th mat-header-cell colspan="2"> Quiz Name: 
-            <input matInput type="text" id="name" name="name" formControlName="name" class="form-control">
-          </th>
-        </tr>
-
+    
         <tr mat-row>
           <th mat-header-cell  colspan="2">Number of questions: {{this.questionCounter}} </th>
           <th mat-header-cell width="150px"><button  mat-raised-button type="button" (click)="addQuestion()" class="btn btn-primary">Add question</button></th>
@@ -52,11 +47,10 @@
         </tr>
 
       </table>
-
      
       
     </form>
     
-    
+    {{this.profileForm.value | json}}
   </ng-container>
 </ng-template>

@@ -17,7 +17,7 @@ import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'
 export class QuizComponent implements OnInit {
   public database = firebase.database();
   public questionCounter = 0;
-  public QnACounter = 0; //koppla till user?
+  public QnACounter = 0; 
   private names: String[] = [];
 
   ngOnInit(): void {
