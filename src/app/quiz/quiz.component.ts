@@ -63,13 +63,22 @@ public database = firebase.database();
    }
   
   onSubmit() {
-    let formData = this.profileForm.value;
-    let x = formData.get(this.QnAs);
+    let formData = this.profileForm.value.get(this.QnAs);
+    let qcounter = this.questionCounter;
+    let userQnACounter = this.QnACounter;
+
+    //this.questionCounter++;
+    //if(this.questionCounter>4){
+       // this.QnACounter++;
+        //this.questionCounter=0;
+   // }
+
+    this.clearForm(); //funkar inte att ha den längst ner idk why
 
     let questions: string [] = [];
     let answers: string [] = [];
 
-    x.array.forEach(element => {
+    formData.array.forEach(element => {
       if (questions == null) {
         questions = element[0];
       } 
@@ -80,19 +89,10 @@ public database = firebase.database();
       } 
       answers.push(element[1]);
     });
-   
-    let qcounter = this.questionCounter;
-
-    this.questionCounter++;
-    if(this.questionCounter>4){
-        this.QnACounter++;
-        this.questionCounter=0;
-    }
-
-    this.clearForm(); //funkar inte att ha den längst ner idk why
+  
 
     let userID = sessionStorage.getItem('user');
-    this.database.ref('users/' + userID + '/' + "quiz" + this.QnACounter + '/' + "question" + this.questionCounter).set({
+    this.database.ref('users/' + userID + '/' + "quiz" + userQnACounter + '/' + "question" + qcounter).set({
        q : questions,
         a : answers
     })
