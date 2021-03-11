@@ -18,6 +18,7 @@ export class QuizComponent implements OnInit {
   public database = firebase.database();
   public questionCounter = 0;
   public QnACounter = 0; //koppla till user?
+  private names: String[] = [];
 
   ngOnInit(): void {
   }
@@ -63,16 +64,23 @@ export class QuizComponent implements OnInit {
     this.questionCounter = 0;
     
    }
+
+   getName(quizName){
+      return this.names.includes(quizName);
+   }
    
    onSubmit() {
     let userID = sessionStorage.getItem('user');
-    if (this.database.ref('users/'+ userID + '/' + this.profileForm.value.name).get()==null){
+    let quizName = this.profileForm.value.name;
+
+    if (!this.getName(quizName)){
       for(let i = 0; i<this.questionCounter;i++){
-        this.database.ref('users/' + userID + '/' + this.profileForm.value.name + '/' + "question" + (i+1)).set({
+        this.database.ref('users/' + userID + '/' + quizName + '/' + "question" + (i+1)).set({
           q : this.profileForm.value.QnAs[i].question,
           a : this.profileForm.value.QnAs[i].answer
         })    
       }
+      this.names.push(quizName)
       this.clearForm();
       this.router.navigateByUrl('/quiz-overview');
     } else {
