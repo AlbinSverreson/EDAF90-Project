@@ -7,9 +7,21 @@
 
   .correctButton{
     margin-bottom: 5px;
+    display: block;
   }
 
   .wrongButton{
     margin-bottom: 5px;
+    display: block;
+  }
+
+  .retryButton{
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  .backToOverviewButton{
+    margin-bottom: 5px;
+    display: block;
   }
   

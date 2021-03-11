@@ -28,6 +28,8 @@ import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
 import firebase from 'firebase/app';
+
+
 firebase.initializeApp(environment.firebase);
 
 
@@ -40,6 +42,7 @@ firebase.initializeApp(environment.firebase);
     DoQuizComponent,
     QuizOverviewComponent,
     FlashCardComponent,
+
 
   ],
   imports: [
