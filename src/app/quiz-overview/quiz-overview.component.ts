@@ -1,7 +1,6 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import firebase from 'firebase/app';
-import { Observable } from 'rxjs';
 import { AuthService } from "../auth.service";
 import 'firebase/database';
 
@@ -13,40 +12,31 @@ import 'firebase/database';
   host: { '[class]': 'quiz' },
 })
 
-
-// const rootQuiz = document.getElementById("show-quiz");
-
 export class QuizOverviewComponent implements OnInit {
   
-  constructor(private renderer: Renderer2, public authService: AuthService) {
-  }
-  
-  ngOnInit(): void {
+  @Input() quizes: any;
+
+  constructor(private router: Router, public authService: AuthService) {
+    this.quizes = [];
     const userId = sessionStorage.getItem('user');
     const db = firebase.database();  
     
     let ref = db.ref('users/' + userId);
-    ref.on('value', readUserQuizes);
-
-    function readUserQuizes(data: any) {
-      const rootQuiz = document.getElementById("show-quiz");
+    ref.on('value', (data) => {
       let user = data.val();
-      let quizes = Object.keys(user);
-      console.log(quizes);
-      for(let i = 0; i < quizes.length; i++){
-        createQuizBox(rootQuiz, data, i);
-      }
-      console.log(rootQuiz);
-      }
+      let userQuizes = Object.keys(user);
       
-    function createQuizBox(root, data: any, index) {
-      const div = document.createElement("div");
-      div.textContent = "Quiz " + index;
-      div.classList.add("show-quiz");
-      root.appendChild(div);
-    }
+      for(let i = 0; i < userQuizes.length; i++) {
+        this.quizes.push(userQuizes[i]);
+      }
+    })
   }
   
+  ngOnInit(): void {
+      
+  }
+
+    takeQuiz() {
+      this.router.navigateByUrl('/do-quiz');
+    };
 }
-
-

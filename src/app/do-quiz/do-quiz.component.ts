@@ -1,12 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 //import { FlashCardComponent } from './flash-card/flash-card.component';
 import { AuthService } from "../auth.service";
+import 'firebase/database';
+import firebase from 'firebase/app';
 
 
 //hämta lista från quiz-overview
 const questions = ["test 1", "test 2", "test 3", "test 4"];
 //hämta lista från quiz-overview
 const answers = ["Svar 1", "svar 2", "svar 3", "svar 4"];
+
+
 
 @Component({
   selector: 'app-do-quiz',
@@ -16,11 +20,11 @@ const answers = ["Svar 1", "svar 2", "svar 3", "svar 4"];
 
 
 export class DoQuizComponent implements OnInit {
+  public questionList: string[];
+  private answerList: string[];
   public scoreValue: number;
   public questionToCard: string;
   public answerToCard: string;
-  public questionList: string[];
-  private answerList: string[];
   public isElementVisible = true;
 
   constructor(public authService: AuthService) { 
@@ -36,6 +40,7 @@ export class DoQuizComponent implements OnInit {
     this.answerList = answers;
     this.questionToCard = this.questionList[0];
     this.answerToCard = this.answerList[0];
+
   }
   
   public correctOnClick(){
