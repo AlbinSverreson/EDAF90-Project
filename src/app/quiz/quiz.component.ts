@@ -66,14 +66,18 @@ export class QuizComponent implements OnInit {
    
    onSubmit() {
     let userID = sessionStorage.getItem('user');
-    for(let i = 0; i<this.questionCounter;i++){
-      this.database.ref('users/' + userID + '/' + this.profileForm.value.name + '/' + "question" + (i+1)).set({
-        q : this.profileForm.value.QnAs[i].question,
-        a : this.profileForm.value.QnAs[i].answer
-      })    
+    if (this.database.ref('users/'+ userID + '/' + this.profileForm.value.name).get()==null){
+      for(let i = 0; i<this.questionCounter;i++){
+        this.database.ref('users/' + userID + '/' + this.profileForm.value.name + '/' + "question" + (i+1)).set({
+          q : this.profileForm.value.QnAs[i].question,
+          a : this.profileForm.value.QnAs[i].answer
+        })    
+      }
+      this.clearForm();
+      this.router.navigateByUrl('/quiz-overview');
+    } else {
+      alert("You already have a quiz with that name");
     }
-    this.clearForm(); //funkar inte att ha den längst ner idk why
-    /* this.router.navigateByUrl('/quiz-overview'); */
-}
+    }
 
 }
