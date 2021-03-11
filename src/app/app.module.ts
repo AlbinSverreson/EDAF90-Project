@@ -27,6 +27,8 @@ import { FlashCardComponent } from './do-quiz/flash-card/flash-card.component';
 import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
+import firebase from 'firebase/app';
+firebase.initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [
