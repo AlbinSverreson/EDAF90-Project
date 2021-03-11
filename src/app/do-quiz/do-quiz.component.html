@@ -14,7 +14,16 @@
   <div class="wrongButton" (click)="wrongOnClick()">
       <button mat-raised-button color="#2E7D32">Wrong</button>
   </div>
+  <div class="retryButton" (click)="retryOnClick()">
+    <button mat-raised-button color="#2E7D32">Retry</button>   
+  </div>
+  <div class="backToOverviewButton">
+    <a routerLink='/quiz-overview' routerLinkActive = "active"><button mat-raised-button color="#2E7D32">Back to Overview</button></a>
+  </div>
+  <div class="finishedQuiz">
+    Quiz completed you scored: <span [innerHTML]="scoreValue"></span> / <span [innerHTML]="questionList.length"></span>
+  </div>
   <div class="Score">
-      Score: <span [innerHTML]="scoreValue"></span>
+      Score: <span [innerHTML]="scoreValue"></span> / <span [innerHTML]="questionList.length"></span>
   </div>
 </ng-template>
