@@ -12,7 +12,7 @@
       <table class="center" formArrayName="QnAs">
         <tr>
           <th colspan="2">Add more questions: </th>
-          <th width="150px"><button type="button" (click)="addQuestion()" class="btn btn-primary">Add question</button></th>
+          <th width="150px"><button  mat-raised-button type="button" (click)="addQuestion()" class="btn btn-primary">Add question</button></th>
      
         </tr>
         <tr *ngFor="let quantity of QnAs().controls; let i=index" [formGroupName]="i">
@@ -25,7 +25,7 @@
               <input type="text" formControlName="answer" class="form-control">
           </td>
           <td>
-              <button (click)="removeQuestion(i)" class="btn btn-danger">Remove</button>
+              <button mat-raised-button (click)="removeQuestion(i)" class="btn btn-danger">Remove</button>
           </td>
         </tr>
 
@@ -37,7 +37,7 @@
       </table>
      
       <p>View your saved quizzes by navigating to Quiz Overview</p>
-      <button type="submit" class="btn btn-success">Save quiz</button>
+      <button  mat-raised-button type="submit" class="btn btn-success">Save quiz</button>
       
     </form>
       

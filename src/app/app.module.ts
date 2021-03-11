@@ -23,9 +23,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DoQuizComponent } from './do-quiz/do-quiz.component';
 import { QuizOverviewComponent } from './quiz-overview/quiz-overview.component';
 import { FlashCardComponent } from './do-quiz/flash-card/flash-card.component';
-
+import {MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatMenuModule,
     MatListModule,
     MatFormFieldModule,
+    MatButtonModule,
 
     ReactiveFormsModule,
     FormsModule

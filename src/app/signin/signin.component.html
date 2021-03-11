@@ -1,6 +1,6 @@
 <!-- Calling GoogleAuth() Api from AuthService -->
 <div *ngIf="!authService.isLoggedin(); else loggedin" class="formGroup">
-  <button type="button" (click)="authService.GoogleAuth()">
+  <button  mat-raised-button type="button" (click)="authService.GoogleAuth()">
     Log in with Google
   </button>
 </div>

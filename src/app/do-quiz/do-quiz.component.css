@@ -2,5 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .correctButton{
+    margin-bottom: 5px;
+  }
+
+  .wrongButton{
+    margin-bottom: 5px;
   }
   
