@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 
     margin: 2rem;
     border-radius: 5px;
@@ -10,6 +11,7 @@
 .quiz {
     display: flex;
     flex-direction: column;
+
     background-color: #f7f7f7;
     border-radius: 5px;
     margin: 2vw 0;
