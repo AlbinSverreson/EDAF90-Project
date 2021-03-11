@@ -23,12 +23,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DoQuizComponent } from './do-quiz/do-quiz.component';
 import { QuizOverviewComponent } from './quiz-overview/quiz-overview.component';
 import { FlashCardComponent } from './do-quiz/flash-card/flash-card.component';
-
+import {MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
 import firebase from 'firebase/app';
 firebase.initializeApp(environment.firebase);
+
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ firebase.initializeApp(environment.firebase);
     MatMenuModule,
     MatListModule,
     MatFormFieldModule,
+    MatButtonModule,
 
     ReactiveFormsModule,
     FormsModule
