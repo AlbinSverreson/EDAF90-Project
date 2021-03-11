@@ -1,50 +1,55 @@
-<div class="container" >
-  
-    <h2 class="center">Create a quiz</h2>
-    
-    <form id="myForm" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-      
-      <p>
-        <label for="name">Quiz Name:</label>
-        <input type="text" id="name" name="name" formControlName="name" class="form-control">
-      </p>
-    
-      <table class="center" formArrayName="QnAs">
-        <tr>
-          <th colspan="2">Add more questions: </th>
-          <th width="150px"><button type="button" (click)="addQuestion()" class="btn btn-primary">Add question</button></th>
-     
-        </tr>
-        <tr *ngFor="let quantity of QnAs().controls; let i=index" [formGroupName]="i">
-          <td>
-              Question:
-              <input type="text" formControlName="question" class="form-control">
-          </td>
-          <td>
-              Answer:
-              <input type="text" formControlName="answer" class="form-control">
-          </td>
-          <td>
-              <button (click)="removeQuestion(i)" class="btn btn-danger">Remove</button>
-          </td>
-        </tr>
+<div *ngIf="!authService.isLoggedin(); else loggedin">
+  Log in to use this feature!
+</div>
 
-        <tr> 
-        <th colspan="2">Number of questions: {{this.questionCounter}} </th>
-        
-      </tr>
-        
-      </table>
-     
-      <p>View your saved quizzes by navigating to Quiz Overview</p>
-      <button type="submit" class="btn btn-success">Save quiz</button>
-      
-    </form>
-      
-    <!--bara för att hålla koll på hur vårt form objekt ser ut -->
-    {{this.profileForm.value | json}} 
-    {{this.profileForm.value.QnAs.question | json }}
+<ng-template #loggedin>
+  <div class="container" >
     
-    
-  </div>
+      <h2 class="center">Create a quiz</h2>
+      
+      <form id="myForm" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        
+        <p>
+          <label for="name">Quiz Name:</label>
+          <input type="text" id="name" name="name" formControlName="name" class="form-control">
+        </p>
+      
+        <table class="center" formArrayName="QnAs">
+          <tr>
+            <th colspan="2">Add more questions: </th>
+            <th width="150px"><button type="button" (click)="addQuestion()" class="btn btn-primary">Add question</button></th>
+       
+          </tr>
+          <tr *ngFor="let quantity of QnAs().controls; let i=index" [formGroupName]="i">
+            <td>
+                Question:
+                <input type="text" formControlName="question" class="form-control">
+            </td>
+            <td>
+                Answer:
+                <input type="text" formControlName="answer" class="form-control">
+            </td>
+            <td>
+                <button (click)="removeQuestion(i)" class="btn btn-danger">Remove</button>
+            </td>
+          </tr>
   
+          <tr> 
+          <th colspan="2">Number of questions: {{this.questionCounter}} </th>
+          
+        </tr>
+          
+        </table>
+       
+        <p>View your saved quizzes by navigating to Quiz Overview</p>
+        <button type="submit" class="btn btn-success">Save quiz</button>
+        
+      </form>
+        
+      <!--bara för att hålla koll på hur vårt form objekt ser ut -->
+      {{this.profileForm.value | json}} 
+      {{this.profileForm.value.QnAs.question | json }}
+      
+      
+    </div>
+</ng-template>

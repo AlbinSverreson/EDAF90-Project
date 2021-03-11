@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import firebase from 'firebase/app';
 import { Observable } from 'rxjs';
+import { AuthService } from "../auth.service";
 import 'firebase/database';
 
 
@@ -17,7 +18,7 @@ import 'firebase/database';
 
 export class QuizOverviewComponent implements OnInit {
   
-  constructor(private renderer: Renderer2) {
+  constructor(private renderer: Renderer2, public authService: AuthService) {
   }
   
   ngOnInit(): void {

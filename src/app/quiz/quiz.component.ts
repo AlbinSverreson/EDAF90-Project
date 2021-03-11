@@ -2,6 +2,7 @@ import  firebase  from 'firebase/app';
 import { Component, OnInit } from '@angular/core';
 import "firebase/database";
 import { CloseScrollStrategy } from '@angular/cdk/overlay';
+import { AuthService } from "../auth.service";
 
 import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'
 
@@ -24,7 +25,7 @@ public database = firebase.database();
 
   profileForm: FormGroup;
    
-  constructor(private fb:FormBuilder) {
+  constructor(private fb:FormBuilder, public authService: AuthService) {
 
     this.profileForm = this.fb.group({
       name: '',

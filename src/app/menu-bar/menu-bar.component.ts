@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { AuthService } from "../auth.service";
 
 @Component({
   selector: 'app-menu-bar',
@@ -8,7 +9,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 })
 export class MenuBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
   }

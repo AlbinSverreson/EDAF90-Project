@@ -1,29 +1,58 @@
-<mat-sidenav-container class="example-container" autosize='true'>
-
-  <mat-sidenav-content>
-  <mat-toolbar>
-      <button type="button" mat-button (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span class="example-spacer">
-        <h2 class="title">Flashcard Funtime</h2>
-      </span>
-      <app-signin></app-signin>
-  </mat-toolbar>
-  <body>
-    <router-outlet> </router-outlet>
-  </body>
-</mat-sidenav-content>
-
-
-    <mat-sidenav #sidenav mode="side" class="example-sidenav">
-      <mat-nav-list>
-        <a mat-list-item routerLink='quiz-overview' routerLinkActive = "active"> Quiz Overview </a>
-        <a mat-list-item routerLink='do-quiz' routerLinkActive = "active"> Take Quiz </a>
-        <a mat-list-item routerLink='quiz' routerLinkActive = "active"> Create Quiz </a> 
-      </mat-nav-list>
-    </mat-sidenav>
+<div *ngIf="!authService.isLoggedin(); else loggedin">
+  <mat-sidenav-container class="example-container" autosize='true'>
   
-</mat-sidenav-container>
+    <mat-sidenav-content>
+    <mat-toolbar>
+        <span class="example-spacer">
+          <h2 class="title">Flashcard Funtime</h2>
+        </span>
+        <app-signin></app-signin>
+    </mat-toolbar>
+    <body>
+      <router-outlet> </router-outlet>
+    </body>
+  </mat-sidenav-content>
+  
+  
+      <mat-sidenav #sidenav mode="side" class="example-sidenav">
+        <mat-nav-list>
+          <a mat-list-item routerLink='quiz-overview' routerLinkActive = "active"> Quiz Overview </a>
+          <a mat-list-item routerLink='do-quiz' routerLinkActive = "active"> Take Quiz </a>
+          <a mat-list-item routerLink='quiz' routerLinkActive = "active"> Create Quiz </a> 
+        </mat-nav-list>
+      </mat-sidenav>
+    
+  </mat-sidenav-container>
+</div>
 
+<ng-template #loggedin>
+  <mat-sidenav-container class="example-container" autosize='true'>
+  
+    <mat-sidenav-content>
+    <mat-toolbar>
+        <button type="button" mat-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="example-spacer">
+          <h2 class="title">Flashcard Funtime</h2>
+        </span>
+        <app-signin></app-signin>
+    </mat-toolbar>
+    <body>
+      <router-outlet> </router-outlet>
+    </body>
+  </mat-sidenav-content>
+  
+  
+      <mat-sidenav #sidenav mode="side" class="example-sidenav">
+        <mat-nav-list>
+          <a mat-list-item routerLink='quiz-overview' routerLinkActive = "active"> Quiz Overview </a>
+          <a mat-list-item routerLink='do-quiz' routerLinkActive = "active"> Take Quiz </a>
+          <a mat-list-item routerLink='quiz' routerLinkActive = "active"> Create Quiz </a> 
+        </mat-nav-list>
+      </mat-sidenav>
+    
+  </mat-sidenav-container>
+
+</ng-template>
 

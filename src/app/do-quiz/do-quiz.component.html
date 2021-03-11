@@ -1,14 +1,20 @@
-<p>bing bang bom you can take a quiz here!</p>
+<div *ngIf="!authService.isLoggedin(); else loggedin">
+  Log in to use this feature!
+</div>
 
-<div class="flashCard">
-    <app-flash-card [question]="questionToCard" [answer]="answerToCard" ></app-flash-card>
-</div>
-<div class="correctButton" (click)="correctOnClick()">
-    <button mat-raised-button color="#2E7D32">Correct</button>
-</div>
-<div class="wrongButton" (click)="wrongOnClick()">
-    <button mat-raised-button color="#2E7D32">Wrong</button>
-</div>
-<div class="Score">
-    Score: <span [innerHTML]="scoreValue"></span>
-</div>
+<ng-template #loggedin>
+  <p>bing bang bom you can take a quiz here!</p>
+  
+  <div class="flashCard">
+      <app-flash-card [question]="questionToCard" [answer]="answerToCard" ></app-flash-card>
+  </div>
+  <div class="correctButton" (click)="correctOnClick()">
+      <button mat-raised-button color="#2E7D32">Correct</button>
+  </div>
+  <div class="wrongButton" (click)="wrongOnClick()">
+      <button mat-raised-button color="#2E7D32">Wrong</button>
+  </div>
+  <div class="Score">
+      Score: <span [innerHTML]="scoreValue"></span>
+  </div>
+</ng-template>

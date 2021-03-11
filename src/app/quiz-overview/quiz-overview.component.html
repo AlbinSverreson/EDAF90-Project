@@ -1,8 +1,14 @@
-<div class="quiz-overview-background" id="show-quiz">
-    <!-- <div class="quiz">
-        Saker här
-    </div>
-    <div class="quiz">
-        Saker här igen
-    </div> -->
+<div *ngIf="!authService.isLoggedin(); else loggedin">
+  Log in to use this feature!
 </div>
+
+<ng-template #loggedin>
+  <div class="quiz-overview-background" id="show-quiz">
+      <!-- <div class="quiz">
+          Saker här
+      </div>
+      <div class="quiz">
+          Saker här igen
+      </div> -->
+  </div>
+</ng-template>

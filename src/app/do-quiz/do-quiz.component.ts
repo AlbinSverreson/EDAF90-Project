@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FlashCardComponent } from './flash-card/flash-card.component';
+import { AuthService } from "../auth.service";
 
 const questions = ["test 1", "test 2", "test 3", "test 4"];
 const answers = ["Svar 1", "svar 2", "svar 3", "svar 4"];
@@ -19,7 +20,7 @@ export class DoQuizComponent implements OnInit {
   private whereInList: number;
 
 
-  constructor() { 
+  constructor(public authService: AuthService) { 
     this.scoreValue = 0;
     this.questionToCard = "";
     this.answerToCard = "";
