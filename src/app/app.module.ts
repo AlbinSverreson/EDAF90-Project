@@ -25,6 +25,8 @@ import { QuizOverviewComponent } from './quiz-overview/quiz-overview.component';
 import { FlashCardComponent } from './do-quiz/flash-card/flash-card.component';
 
 import { FormsModule } from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { FormsModule } from '@angular/forms';
     MatSidenavModule,
     MatMenuModule,
     MatListModule,
+    MatFormFieldModule,
 
     ReactiveFormsModule,
     FormsModule

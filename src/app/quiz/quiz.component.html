@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" >
   
-    <h2>Create a quiz</h2>
+    <h2 class="center">Create a quiz</h2>
     
     <form id="myForm" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
       
@@ -9,13 +9,11 @@
         <input type="text" id="name" name="name" formControlName="name" class="form-control">
       </p>
     
-      <table class="table table-bordered" formArrayName="QnAs">
+      <table class="center" formArrayName="QnAs">
         <tr>
-          <th colspan="2">Add multiple questions: </th>
+          <th colspan="2">Add more questions: </th>
           <th width="150px"><button type="button" (click)="addQuestion()" class="btn btn-primary">Add question</button></th>
-
-          <th colspan="2">Number of questions: </th>
-          <p> {{this.questionCounter}} </p>
+     
         </tr>
         <tr *ngFor="let quantity of QnAs().controls; let i=index" [formGroupName]="i">
           <td>
@@ -30,6 +28,12 @@
               <button (click)="removeQuestion(i)" class="btn btn-danger">Remove</button>
           </td>
         </tr>
+
+        <tr> 
+        <th colspan="2">Number of questions: {{this.questionCounter}} </th>
+        
+      </tr>
+        
       </table>
      
       <p>View your saved quizzes by navigating to Quiz Overview</p>
@@ -37,8 +41,9 @@
       
     </form>
       
-    <!--bara för att hålla koll på hur vårt form objekt ser ut-->
+    <!--bara för att hålla koll på hur vårt form objekt ser ut
     {{this.profileForm.value | json}} 
+    -->
     
   </div>
   
