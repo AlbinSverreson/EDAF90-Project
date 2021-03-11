@@ -1,10 +1,24 @@
 .quiz-overview-background {
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+
     margin: 2rem;
     border-radius: 5px;
 }
 
 .quiz {
-    background-color: white;
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f7f7;
+    border-radius: 5px;
     margin: 2vw 0;
-    padding: 10vw 0;
+    padding: 5vw 3vw;
+    
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.quiz button {
+    margin-top: 0.5vw;
 }
