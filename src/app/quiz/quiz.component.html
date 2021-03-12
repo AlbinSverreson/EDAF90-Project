@@ -3,53 +3,55 @@
 </div>
 
 <ng-template #loggedin>
-  <ng-container >
-
-    <h2 >Create a quiz</h2>
   
-    <form id="myForm" [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="center">
-
+  <h2 >Create a quiz </h2>
+  
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" >
+ 
+      <p>
+        <mat-label > 
+        Quiz name:
+        <input style="background-color:snow;" type="text" name="name" formControlName="name" class="form-control" class="round">
+        </mat-label>
+      </p>
+ 
       <p> 
-        <label for="name"> Quiz Name:  </label>
-        <input matInput type="text" id="name" name="name" formControlName="name" class="form-control">
+      <mat-label> 
+        Number of questions: {{this.questionCounter}} 
+      </mat-label>
       </p>
 
-      <table mat-table class="center" formArrayName="QnAs" >
-    
-        <tr mat-row>
-          <th mat-header-cell  colspan="2">Number of questions: {{this.questionCounter}} </th>
-          <th mat-header-cell width="150px"><button  mat-raised-button type="button" (click)="addQuestion()" class="btn btn-primary">Add question</button></th>
-        </tr>
+      <div formArrayName="QnAs" class="center">
+        <p> 
+        <button mat-raised-button type="button" (click)="addQuestion()" class="btn btn-primary" class="round">Add question</button>
+        </p>
 
-        <tr mat-row *ngFor="let quantity of QnAs().controls; let i=index" [formGroupName]="i">
+        <div *ngFor="let quantity of QnAs().controls; let i=index" [formGroupName]="i">
 
-          <td mat-cell>
+          <mat-label>
               Question:
-              <input matInput type="text" formControlName="question" class="form-control">
-          </td>
+              <input style="background-color:snow;" type="text" formControlName="question" class="form-control" class="round">
+          </mat-label>
 
-          <td mat-cell>
+          <mat-label>
               Answer:
-              <input matInput type="text" formControlName="answer" class="form-control">
-          </td>
+              <input style="background-color:snow;" type="text" formControlName="answer" class="form-control" class="round">
+          </mat-label>
 
-          <td mat-cell>
-              <button mat-mini-fab color="basic" (click)="removeQuestion(i)" class="btn btn-danger">
+          <mat-label>
+              <button mat-mini-fab color="basic" (click)="removeQuestion(i)" style="border: 2px solid  darkslategrey;">
                 <mat-icon>delete</mat-icon>
               </button>
-          </td>
+          </mat-label>
 
-        </tr>
+        </div>
 
-        <tr mat-row>
-          <th mat-header-cell  colspan="2"> </th>
-          <th mat-header-cell width="150px"><button mat-raised-button color="basic" type="submit" class="btn btn-success">Save quiz</button></th>
-        </tr>
+        <p> 
+        <button mat-raised-button color="basic" type="submit" class="round">Save quiz</button>
+        </p>
 
-      </table>
-     
-      
+      </div>
+   
     </form>
 
-  </ng-container>
 </ng-template>
