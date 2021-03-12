@@ -23,7 +23,7 @@
 
       <div formArrayName="QnAs" class="center">
         <p> 
-        <button mat-raised-button type="button" (click)="addQuestion()" class="btn btn-primary" >Add question</button>
+        <button mat-raised-button type="button" (click)="addQuestion()" >Add question</button>
         </p>
 
         <div *ngFor="let quantity of QnAs().controls; let i=index" [formGroupName]="i">
