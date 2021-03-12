@@ -26,6 +26,7 @@ import { FlashCardComponent } from './do-quiz/flash-card/flash-card.component';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatTableModule} from '@angular/material/table';
 
 import firebase from 'firebase/app';
 
@@ -61,6 +62,7 @@ firebase.initializeApp(environment.firebase);
     MatListModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatTableModule,
 
     ReactiveFormsModule,
     FormsModule
