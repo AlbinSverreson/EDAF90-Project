@@ -47,34 +47,31 @@ export class DoQuizComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.questionList = [];
-    this.answerList = [];
     this.questionToCard = this.questionList[0];
     this.answerToCard = this.answerList[0];
-    console.log(this.name);
+
     let refString = ('users/' + this.userID + '/' + this.name);
     this.database.ref(refString).on('value', (data) => {
-      let quiz = data.val;
+      let quiz = data.val();
       let questions = Object.keys(quiz);
-      let nbrQuestions: string[];
-      nbrQuestions = [];
-      questions.forEach(question =>{
-        console.log("vilken fråga" + question);
-        nbrQuestions.push(question);
-      })
 
-      nbrQuestions.forEach(question =>{
-        this.database.ref(refString + '/' + question).on('value', (data2) =>{
-          let qstNbr = data2.val;
-          console.log("här nu" + Object.keys(qstNbr)[0])
-          this.questionList.push(Object.keys(qstNbr)[0]);
-          this.answerList.push(Object.keys(qstNbr)[1]);
-        })
-
+      questions.forEach(question => {
+        this.questionList.push(quiz[question].q);
+        this.answerList.push(quiz[question].a);
       });
 
+      // questions.forEach(question =>{
+      //   this.database.ref(refString + '/' + question).on('value', (data2) =>{
+      //     let qstNbr = data2.val();
+      //     // console.log("här nu  " + Object.keys(qstNbr)[0])
+      //     this.questionList.push(Object.keys(qstNbr)[0]);
+      //     this.answerList.push(Object.keys(qstNbr)[1]);
+      //   })
+
+      // });
+
     });
-    console.log("frågor" + this.questionList)
+    // console.log("frågor" + this.questionList)
 
   }
   
