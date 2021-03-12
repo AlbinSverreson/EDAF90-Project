@@ -47,19 +47,19 @@ export class DoQuizComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.questionToCard = this.questionList[0];
-    this.answerToCard = this.answerList[0];
-
+    
     let refString = ('users/' + this.userID + '/' + this.name);
     this.database.ref(refString).on('value', (data) => {
       let quiz = data.val();
       let questions = Object.keys(quiz);
-
+      
       questions.forEach(question => {
         this.questionList.push(quiz[question].q);
         this.answerList.push(quiz[question].a);
       });
-
+      
+      this.questionToCard = this.questionList[0];
+      this.answerToCard = this.answerList[0];
       // questions.forEach(question =>{
       //   this.database.ref(refString + '/' + question).on('value', (data2) =>{
       //     let qstNbr = data2.val();
