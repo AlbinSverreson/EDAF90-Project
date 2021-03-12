@@ -42,11 +42,13 @@ export class QuizOverviewComponent implements OnInit {
 
   takeQuiz(quiz) {
       this.activeQuiz = quiz;
-      console.log("quiz = " + quiz);
-      console.log("activequiz = " + this.activeQuiz);
-      this.router.navigateByUrl('/do-quiz', {
+      /* console.log("quiz = " + quiz);
+      console.log("activequiz = " + this.activeQuiz); */
+/*       this.router.navigateByUrl('/do-quiz', {
         state: {name: this.activeQuiz}
-      });
+      }); */
+      sessionStorage.setItem('ActiveQuiz', this.activeQuiz);
+      this.router.navigateByUrl('/do-quiz');
   };
 
   removeQuiz(quiz) {

@@ -34,8 +34,11 @@ export class DoQuizComponent implements OnInit {
     this.answerToCard = "";
     this.questionList = [];
     this.answerList = [];
-    this.name = this.router.getCurrentNavigation()?.extras.state?.name;
+    //this.name = this.router.getCurrentNavigation()?.extras.state?.name;
+    this.name = sessionStorage.getItem('ActiveQuiz');
+    console.log('ActiveQuiz:' + this.name);
     this.userID = sessionStorage.getItem('user');
+    console.log(this.userID);
   }
   
   ngOnInit(): void {
