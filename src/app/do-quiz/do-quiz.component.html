@@ -3,7 +3,7 @@
 </div>
 
 <ng-template #loggedin>
-  <p>bing bang bom you can take a quiz here!</p>
+  <p>Click card to reveal answer</p>
   <div class="finishedQuiz" *ngIf="!this.isElementVisible">
     Quiz completed you scored: <span [innerHTML]="scoreValue"></span> / <span [innerHTML]="questionList.length"></span>
   </div>
