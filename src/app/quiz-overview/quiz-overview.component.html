@@ -6,7 +6,7 @@
   <div class="quiz-overview-background" id="show-quiz">
       <div class="quiz" *ngFor="let quiz of quizes">
         {{quiz}}
-        <button mat-raised-button (click)="takeQuiz();">Take Quiz</button>
+        <button mat-raised-button (click)="takeQuiz(quiz)" >Take Quiz</button>
       </div>
   </div>
 </ng-template>

@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { DoQuizComponent } from './../do-quiz/do-quiz.component';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import firebase from 'firebase/app';
 import { AuthService } from "../auth.service";
@@ -15,6 +16,7 @@ import 'firebase/database';
 export class QuizOverviewComponent implements OnInit {
   
   @Input() quizes: any;
+  @Output() activeQuiz: any;
 
   constructor(private router: Router, public authService: AuthService) {
     this.quizes = [];
@@ -36,7 +38,12 @@ export class QuizOverviewComponent implements OnInit {
       
   }
 
-    takeQuiz() {
-      this.router.navigateByUrl('/do-quiz');
+    takeQuiz(quiz) {
+      this.activeQuiz = quiz;
+      console.log("quiz = " + quiz);
+      console.log("activequiz = " + this.activeQuiz);
+      this.router.navigateByUrl('/do-quiz', {
+        state: {name: this.activeQuiz}
+      });
     };
 }
