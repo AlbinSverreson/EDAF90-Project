@@ -9,7 +9,8 @@ const routes: Routes = [
   {path: 'quiz', component: QuizComponent},
   {path: 'do-quiz', component: DoQuizComponent},
   {path: 'quiz-overview', component: QuizOverviewComponent},
-  {path: '', redirectTo: '/menubar', pathMatch: 'full'}
+  {path: '', redirectTo: '/quiz-overview', pathMatch: 'full'}
+
 
 ];
 

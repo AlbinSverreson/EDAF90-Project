@@ -1,5 +1,5 @@
 import  firebase  from 'firebase/app';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import "firebase/database";
 import { CloseScrollStrategy } from '@angular/cdk/overlay';
 import { AuthService } from "../auth.service";
@@ -19,16 +19,20 @@ export class QuizComponent implements OnInit {
   public questionCounter = 0;
   public QnACounter = 0; 
   private names: String[] = [];
-
+  
   ngOnInit(): void {
+    this.names = JSON.parse(sessionStorage.getItem('Names')||"");
+    console.log(this.names);
   }
+  
 
+  
   name = 'Angular';
-
+  
   profileForm: FormGroup;
-   
+  
   constructor(private fb:FormBuilder, public authService: AuthService, private router: Router) {
-
+    
     this.profileForm = this.fb.group({
       name: '',
       QnAs: this.fb.array([]) 

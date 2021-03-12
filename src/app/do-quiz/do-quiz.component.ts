@@ -53,7 +53,7 @@ export class DoQuizComponent implements OnInit {
       });
       this.questionToCard = this.questionList[0];
       this.answerToCard = this.answerList[0];
-
+      
     });
 
   }

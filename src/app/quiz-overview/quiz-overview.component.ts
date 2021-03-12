@@ -1,5 +1,5 @@
 import { DoQuizComponent } from './../do-quiz/do-quiz.component';
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import firebase from 'firebase/app';
 import { AuthService } from "../auth.service";
@@ -13,7 +13,7 @@ import 'firebase/database';
   host: { '[class]': 'quiz' },
 })
 
-export class QuizOverviewComponent implements OnInit {
+export class QuizOverviewComponent implements OnInit{
   
   @Input() quizes: any;
   @Output() activeQuiz: any;
@@ -32,13 +32,19 @@ export class QuizOverviewComponent implements OnInit {
       
       for(let i = 0; i < userQuizes.length; i++) {
         this.quizes.push(userQuizes[i]);
+        console.log(this.quizes);
       }
+      sessionStorage.setItem('Names', JSON.stringify(this.quizes));    
+      console.log(this.quizes);
     })
+    
   }
   
   ngOnInit(): void {
-      
+    //sessionStorage.setItem('Names', JSON.stringify(this.quizes));
   }
+
+
 
   takeQuiz(quiz) {
       this.activeQuiz = quiz;
