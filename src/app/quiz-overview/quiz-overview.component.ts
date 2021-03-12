@@ -17,13 +17,15 @@ export class QuizOverviewComponent implements OnInit {
   
   @Input() quizes: any;
   @Output() activeQuiz: any;
+  userId: any;
+  db: any;
 
   constructor(private router: Router, public authService: AuthService) {
     this.quizes = [];
-    const userId = sessionStorage.getItem('user');
-    const db = firebase.database();  
+    this.userId = sessionStorage.getItem('user');
+    this.db = firebase.database();  
     
-    let ref = db.ref('users/' + userId);
+    let ref = this.db.ref('users/' + this.userId);
     ref.on('value', (data) => {
       let user = data.val();
       let userQuizes = Object.keys(user);
@@ -38,12 +40,18 @@ export class QuizOverviewComponent implements OnInit {
       
   }
 
-    takeQuiz(quiz) {
+  takeQuiz(quiz) {
       this.activeQuiz = quiz;
       console.log("quiz = " + quiz);
       console.log("activequiz = " + this.activeQuiz);
       this.router.navigateByUrl('/do-quiz', {
         state: {name: this.activeQuiz}
       });
-    };
+  };
+
+  removeQuiz(quiz) {
+    this.db.ref('users/' + this.userId + "/" + quiz).remove();
+    window.location.reload();
+  }
+
 }

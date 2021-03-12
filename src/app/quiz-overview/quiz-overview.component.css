@@ -24,3 +24,7 @@
 .quiz button {
     margin-top: 0.5vw;
 }
+
+.delete {
+    background-color: #f83c3c;
+}
